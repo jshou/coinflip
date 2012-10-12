@@ -1,5 +1,4 @@
 require 'sinatra'
-require 'yajl'
 require './environment'
 
 get '/' do

@@ -21,6 +21,15 @@ describe Flip do
   end
 
   describe 'create' do
+    before :each do
+      SecureRandom.stub(:hex).with(2) { 'truly random' }
+      Time.stub(:now) { 0 }
+      Flip.stub(:rand) { 1 }
+    end
+    it 'sets id => flip_data in redis' do
+      mock_redis.should_receive(:set).with('truly random', '{"time_of_flip":4,"result":"tails"}')
+      Flip.create(4)
+    end
   end
 
 end
