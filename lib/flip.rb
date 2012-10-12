@@ -4,7 +4,7 @@ class Flip
     return nil if data.nil?
 
     data = Yajl.load(data)
-    seconds_left = Time.now.to_i - data['time_of_flip']
+    seconds_left = data['time_of_flip'] - Time.now.to_i
     if seconds_left > 0
       {seconds_left: seconds_left}
     else
