@@ -1,6 +1,5 @@
 require 'sinatra'
-require 'yajl-ruby'
-require 'redis'
+# require 'redis'
 
 get '/' do
   haml :index
@@ -17,11 +16,12 @@ post '/flip' do
     return ":seconds_til_flip cannot be blank"
   end
 
+  id = SecureRandom.hex 4
   # redis.
 end
 
 def redis
-	@@redis ||= Redis.new
+	@redis ||= Redis.new
 end
 
 def json_body
