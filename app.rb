@@ -1,30 +1,30 @@
 require 'sinatra'
-# require 'redis'
+require 'yajl'
+require './environment'
 
 get '/' do
   haml :index
 end
 
 get '/flip/:id' do |id|
-  "Flip id: #{id}!"
+  halt 404 unless Flip.exist? id
+
+  request.accept.each do |type|
+    case type
+    when 'text/html'
+      haml(:show, locals: {id: id})
+    when 'text/json'
+      content_type :json
+      Yajl.dump Flip.get(id)
+    end
+  end
 end
 
 post '/flip' do
   seconds = params[:seconds_til_flip]
-  if seconds.nil? || seconds.strip.empty?
-    status 400
-    return ":seconds_til_flip cannot be blank"
-  end
+  halt 400, ":seconds_til_flip cannot be blank" if seconds.nil? || seconds.strip.empty?
 
-  id = SecureRandom.hex 4
-  # redis.
-end
+  Flip.create(seconds)
 
-def redis
-	@redis ||= Redis.new
-end
-
-def json_body
-  request.body.rewind # in case it has already been read
-  Yajl.load request.body.read
+  redirect "/flip/#{id}"
 end
