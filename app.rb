@@ -1,7 +1,7 @@
 require 'sinatra'
 
 get '/' do
-  'i am a robot. i cannot see'
+  haml :index
 end
 
 get '/flip/:id' do |id|
