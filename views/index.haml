@@ -1,6 +1,23 @@
 .span4
-  %input.timebutton{ type: 'button', value: '5 seconds' }
+  %input#five.timebutton{ type: 'button', value: '5 seconds' }
 .span4
-  %input.timebutton{ type: 'button', value: '30 seconds' }
+  %input#thirty.timebutton{ type: 'button', value: '30 seconds' }
 .span4
-  %input.timebutton{ type: 'button', value: '300 seconds' }
+  %input#longtime.timebutton{ type: 'button', value: '5 minutes' }
+
+:javascript
+
+  var postFlip = function(seconds) {
+    //$.post('/flip', {seconds_til_flip: seconds}, function(data, textStatus, jqXHR) {
+    //  debugger;
+    //});
+    alert(seconds);
+  }
+
+  var flip = function(element, seconds) {
+    $(element).on('click', postFlip(seconds));
+  }
+
+  flip('#five', 5);
+  flip('#thirty', 30);
+  flip('#longtime', 300);
