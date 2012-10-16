@@ -28,7 +28,6 @@ post '/flip' do
   redirect "/flip/#{id}"
 end
 
-get '/stylesheets/:name.css' do
-  content_type 'text/css', :charset => 'utf-8'
-  scss(:"stylesheets/#{params[:name]}" )
+get '/style.css' do
+  sass :style
 end

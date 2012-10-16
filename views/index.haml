@@ -1,3 +1,7 @@
 %form{name: 'coinflip', action: '/flip', method: 'POST'}
-  %input{type: 'text', name: 'seconds_til_flip'}
-  %input{type: 'submit', value: 'Submit'}
+  .span4
+    %input.timebutton{ type: 'button', value: '5 seconds' }
+  .span4
+    %input.timebutton{ type: 'button', value: '30 seconds' }
+  .span4
+    %input.timebutton{ type: 'button', value: '300 seconds' }

@@ -1,6 +1,15 @@
+!!! 5
 %html
   %head
+    %link{ rel: 'stylesheet', href: 'css/bootstrap.min.css' }
+    %link{ rel: 'stylesheet', href: 'css/bootstrap-responsive.min.css' }
+    %link{ rel: 'stylesheet', href: 'style.css' }
+    %script{ src: 'js/bootstrap.min.js' }
     %title coinflip
 
   %body
-    =yield
+    .container
+      .row-fluid.logo
+        %h1 coinflip
+      .row-fluid
+        =yield
