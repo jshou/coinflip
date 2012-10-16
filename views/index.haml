@@ -15,7 +15,7 @@
   }
 
   var flip = function(element, seconds) {
-    $(element).on('click', postFlip(seconds));
+    $(element).on('click', function() { postFlip(seconds) });
   }
 
   flip('#five', 5);
