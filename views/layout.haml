@@ -12,7 +12,9 @@
 
   %body
     .container
-      .row-fluid.logo
-        %h1 coinflip
-      .row-fluid
-        =yield
+      .middle
+        .row
+          .logo.span3
+            %h1 coinflip
+          .mainpage.span8.offset1
+            =yield
