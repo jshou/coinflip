@@ -3,14 +3,12 @@
 %span#seconds_til_flip
 
 :javascript
-  var secondsLeft;
   var updateTimer = function(s, result) {
     if (s > 0) {
       $('#seconds_til_flip').text(s)
-      secondsLeft--;
 
       setTimeout(function() {
-        updateTimer(secondsLeft);
+        updateTimer(s - 1, result);
       }, 1000);
     } else if (!result) {
       window.location.reload();
@@ -19,6 +17,5 @@
 
   $.get('/flip/#{id}', function(data) {
     $('#result').text(data.result);
-    secondsLeft = data.seconds_left;
-    updateTimer(secondsLeft, data.result);
+    updateTimer(data.seconds_left, data.result);
   });
