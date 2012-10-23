@@ -3,7 +3,22 @@
 %span#seconds_til_flip
 
 :javascript
-  $.get('/flip/#{id}', function(data, textStatus) {
+  var secondsLeft;
+  var updateTimer = function(s, result) {
+    if (s > 0) {
+      $('#seconds_til_flip').text(s)
+      secondsLeft--;
+
+      setTimeout(function() {
+        updateTimer(secondsLeft);
+      }, 1000);
+    } else if (!result) {
+      window.location.reload();
+    }
+  }
+
+  $.get('/flip/#{id}', function(data) {
     $('#result').text(data.result);
-    $('#seconds_til_flip').text(data.seconds_left);
+    secondsLeft = data.seconds_left;
+    updateTimer(secondsLeft, data.result);
   });
