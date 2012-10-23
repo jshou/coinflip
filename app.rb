@@ -23,7 +23,7 @@ post '/flip' do
   seconds = params[:seconds_til_flip]
   halt 400, ":seconds_til_flip cannot be blank" if seconds.nil? || seconds.strip.empty?
 
-  Flip.create(seconds)
+  id = Flip.create(seconds)
 
   redirect "/flip/#{id}"
 end

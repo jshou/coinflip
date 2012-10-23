@@ -1,7 +1,13 @@
 .buttons
-  %input#five.timebutton{ type: 'button', value: '5 seconds' }
-  %input#thirty.timebutton{ type: 'button', value: '30 seconds' }
-  %input#longtime.timebutton{ type: 'button', value: '5 minutes' }
+  %form{action: '/flip', method: 'POST'}
+    %input{type: 'hidden', value: '5', name: 'seconds_til_flip'}
+    %input#five.timebutton{ type: 'submit', value: '5 seconds' }
+  %form{action: '/flip', method: 'POST'}
+    %input{type: 'hidden', value: '30', name: 'seconds_til_flip'}
+    %input#thirty.timebutton{ type: 'submit', value: '30 seconds' }
+  %form{action: '/flip', method: 'POST'}
+    %input{type: 'hidden', value: '300', name: 'seconds_til_flip'}
+    %input#longtime.timebutton{ type: 'submit', value: '5 minutes' }
 
 :javascript
 
