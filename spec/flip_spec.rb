@@ -16,13 +16,13 @@ describe Flip do
     it "returns seconds left if it isn't time for flipping yet" do
       Time.stub(:now) { 4 }
       mock_redis.stub(:get).with('id') { '{"time_of_flip":5,"result":"heads"}'}
-      Flip.get('id').should == {seconds_left: 1}
+      Flip.get('id').should == {seconds_left: 1, result: nil}
     end
 
     it 'returns result if time for flipping is here' do
       Time.stub(:now) { 6 }
       mock_redis.stub(:get).with('id') { '{"time_of_flip":5,"result":"heads"}'}
-      Flip.get('id').should == {result: 'heads'}
+      Flip.get('id').should == {seconds_left: 0, result: 'heads'}
     end
   end
 
