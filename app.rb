@@ -5,18 +5,15 @@ get '/' do
   haml :index
 end
 
+get '/style.css' do
+  sass :style
+end
+
 get '/flip/:id' do |id|
   halt 404 unless Flip.exist? id
 
-  request.accept.each do |type|
-    case type
-    when 'text/html'
-      haml(:show, locals: {id: id})
-    when 'text/json'
-      content_type :json
-      Yajl.dump Flip.get(id)
-    end
-  end
+  content_type :json
+  Yajl.dump Flip.get(id)
 end
 
 post '/flip' do
@@ -25,9 +22,10 @@ post '/flip' do
 
   id = Flip.create(seconds)
 
-  redirect "/flip/#{id}"
+  redirect "/#{id}"
 end
 
-get '/style.css' do
-  sass :style
+get '/:id' do |id|
+  halt 404 unless Flip.exist? id
+  haml(:show, locals: {id: id})
 end

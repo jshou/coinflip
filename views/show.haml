@@ -1,0 +1,9 @@
+%h1 this is a flip with id: #{id}
+%span#result
+%span#seconds_til_flip
+
+:javascript
+  $.get('/flip/#{id}', function(data, textStatus) {
+    $('#result').text(data.result);
+    $('#seconds_til_flip').text(data.seconds_to_flip);
+  });

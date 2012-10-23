@@ -6,9 +6,9 @@ class Flip
     data = Yajl.load(data)
     seconds_left = data['time_of_flip'] - Time.now.to_i
     if seconds_left > 0
-      {seconds_left: seconds_left}
+      {seconds_left: seconds_left, result: nil}
     else
-      {result: data['result']}
+      {seconds_left: 0, result: data['result']}
     end
   end
 
