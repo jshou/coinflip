@@ -31,6 +31,11 @@ class Flip
   private
 
   def self.redis
-    @@redis ||= Redis.new
+    if ENV['REDISTOGO_URL'].nil?
+      @@redis ||= Redis.new
+    else
+      uri = URI.parse(ENV["REDISTOGO_URL"])
+      @@redis ||= Redis.new(host: uri.host, port: uri.port, password: uri.password)
+    end
   end
 end
