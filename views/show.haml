@@ -1,11 +1,10 @@
-%h1 this is a flip with id: #{id}
-%span#result
-%span#seconds_til_flip
+%span.countdown#result
+%span.flipurl http://coinflip.herokuapp.com/#{id}
 
 :javascript
   var updateTimer = function(s, result) {
     if (s > 0) {
-      $('#seconds_til_flip').text(s)
+      $('#result').text( formatCountdown(s) );
 
       setTimeout(function() {
         updateTimer(s - 1, result);
@@ -15,7 +14,24 @@
     }
   }
 
+  var formatCountdown = function(s) {
+    var minutes = Math.floor(s / 60);
+    var seconds = s % 60;
+    return doubleDigitize(minutes) + ":" + doubleDigitize(seconds);
+  }
+
+  var doubleDigitize = function(i) {
+    if ( i < 10 ) {
+      return "0" + i;
+    } else {
+      return i;
+    }
+  }
+
   $.get('/flip/#{id}', function(data) {
-    $('#result').text(data.result);
-    updateTimer(data.seconds_left, data.result);
+    if (data.result) {
+      $('#result').text(data.result);
+    } else {
+      updateTimer(data.seconds_left, data.result);
+    }
   });

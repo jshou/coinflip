@@ -26,6 +26,6 @@ post '/flip' do
 end
 
 get '/:id' do |id|
-  halt 404 unless Flip.exist? id
+  redirect '/' unless Flip.exist? id
   haml(:show, locals: {id: id})
 end
