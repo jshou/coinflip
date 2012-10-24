@@ -1,11 +1,10 @@
 %span.countdown#result
-%span.countdown#seconds_til_flip
 %span.flipurl http://coinflip.herokuapp.com/#{id}
 
 :javascript
   var updateTimer = function(s, result) {
     if (s > 0) {
-      $('#seconds_til_flip').text( formatCountdown(s) );
+      $('#result').text( formatCountdown(s) );
 
       setTimeout(function() {
         updateTimer(s - 1, result);
