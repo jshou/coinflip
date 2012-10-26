@@ -12,6 +12,7 @@ end
 get '/flip/:id' do |id|
   halt 404 unless Flip.exist? id
 
+  response.headers['Cache-Control'] = 'public, no-store, max-age=0'
   content_type :json
   Yajl.dump Flip.get(id)
 end
