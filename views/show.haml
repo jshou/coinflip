@@ -1,5 +1,5 @@
 %span.countdown#result
-%span.flipurl http://coinflip.herokuapp.com/#{id}
+%input.flipurl{ id: "flipurl", value: "http://coinflip.herokuapp.com/#{id}" }
 
 :javascript
   var updateTimer = function(s, result) {
@@ -35,3 +35,6 @@
       updateTimer(data.seconds_left, data.result);
     }
   });
+
+  document.getElementById("flipurl").focus();
+  document.getElementById("flipurl").select();
