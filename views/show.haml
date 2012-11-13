@@ -1,5 +1,7 @@
 %span.countdown#result
-%span.flipurl http://coinflip.herokuapp.com/#{id}
+%div.urlbox
+  your opponent can watch too!
+  %input.flipurl{ id: "flipurl", value: "http://coinflip.herokuapp.com/#{id}" }
 
 :javascript
   var updateTimer = function(s, result) {
@@ -35,3 +37,5 @@
       updateTimer(data.seconds_left, data.result);
     }
   });
+
+  $('#flipurl').focus();
