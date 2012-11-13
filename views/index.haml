@@ -1,13 +1,13 @@
 .buttons
   %form{action: '/flip', method: 'POST'}
     %input{type: 'hidden', value: '5', name: 'seconds_til_flip'}
-    %input#five.timebutton{ type: 'submit', value: '5 seconds' }
+    %input#five.btn.btn-inverse{ type: 'submit', value: '5 seconds' }
   %form{action: '/flip', method: 'POST'}
     %input{type: 'hidden', value: '30', name: 'seconds_til_flip'}
-    %input#thirty.timebutton{ type: 'submit', value: '30 seconds' }
+    %input#thirty.btn.btn-inverse{ type: 'submit', value: '30 seconds' }
   %form{action: '/flip', method: 'POST'}
     %input{type: 'hidden', value: '300', name: 'seconds_til_flip'}
-    %input#longtime.timebutton{ type: 'submit', value: '5 minutes' }
+    %input#longtime.btn.btn-inverse{ type: 'submit', value: '5 minutes' }
 
 :javascript
 
