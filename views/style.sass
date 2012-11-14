@@ -12,6 +12,11 @@
   -webkit-box-orient: horizontal
   box-orient: horizontal
 
+=child-flex($x)
+  -moz-box-flex: $x
+  -webkit-box-flex: $x
+  box-flex: $x
+
 a
   color: #333
 
@@ -23,15 +28,16 @@ a
 .middle
   +vcenter
   +parent-of-horizontal
-  border: 1px solid #333
 .logo
   +vcenter
+  +child-flex(1)
   border-right: 1px solid #333
   height: 300px
-  -webkit-box-flex: 1
+  padding-right: 100px
 .mainpage
-  -webkit-box-flex: 2
   +vcenter
+  +child-flex(2)
+  margin: 100px
   form
     margin: 0
   .buttons
