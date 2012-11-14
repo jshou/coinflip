@@ -1,23 +1,40 @@
+=vcenter
+  display: box
+  box-align: center
+  display: -moz-box
+  -moz-box-align: center
+  display: -webkit-box
+  -webkit-box-align: center
+  -webkit-box-pack: center
+
+=parent-of-horizontal
+  -moz-box-orient: horizontal
+  -webkit-box-orient: horizontal
+  box-orient: horizontal
+
+a
+  color: #333
+
+.container
+  +vcenter
+  position: absolute
+  top: 0
+  bottom: 0
 .middle
-  position: fixed
-  top: 30%
-  width: 100%
+  +vcenter
+  +parent-of-horizontal
+  border: 1px solid #333
 .logo
-  text-align: center
+  +vcenter
   border-right: 1px solid #333
   height: 300px
-  h1
-    position: relative
-    top: 35%
-  a
-    color: #333
+  -webkit-box-flex: 1
 .mainpage
+  -webkit-box-flex: 2
+  +vcenter
   form
     margin: 0
-  height: 300px
   .buttons
-    position: relative
-    top: 27%
     .btn
       width: 110px
   input

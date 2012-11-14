@@ -12,10 +12,9 @@
 
   %body
     .container
-      .middle
-        .row
-          .logo.span3
-            %h1
-              %a(href = '/') coinflip
-          .mainpage.span8.offset1
-            =yield
+      .middle.row
+        .logo
+          %h1
+            %a(href = '/') coinflip
+        .mainpage
+          =yield
