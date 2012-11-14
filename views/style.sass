@@ -22,11 +22,11 @@
 a
   color: #333
 
+html, body
+  height: 100%
 .container
   +vcenter
-  position: absolute
-  top: 0
-  bottom: 0
+  height: 100%
 .middle
   +vcenter
   +parent-of-horizontal
@@ -38,7 +38,7 @@ a
   padding-right: 100px
 .mainpage
   +vcenter
-  +child-flex(2)
+  +child-flex(1.618)
   margin: 100px
   form
     margin: 0
