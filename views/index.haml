@@ -1,26 +1,12 @@
 .buttons
   %form{action: '/flip', method: 'POST'}
     %input{type: 'hidden', value: '5', name: 'seconds_til_flip'}
-    %input#five.btn.btn-inverse{ type: 'submit', value: '5 seconds' }
+    %input.btn.btn-inverse{ type: 'submit', value: '5 seconds' }
   %form{action: '/flip', method: 'POST'}
     %input{type: 'hidden', value: '30', name: 'seconds_til_flip'}
-    %input#thirty.btn.btn-inverse{ type: 'submit', value: '30 seconds' }
-  %form{action: '/flip', method: 'POST'}
-    %input{type: 'hidden', value: '300', name: 'seconds_til_flip'}
-    %input#longtime.btn.btn-inverse{ type: 'submit', value: '5 minutes' }
-
-:javascript
-
-  var postFlip = function(seconds) {
-    $.post('/flip', {seconds_til_flip: seconds}, function(data, textStatus, jqXHR) {
-      debugger;
-    });
-  }
-
-  var flip = function(element, seconds) {
-    $(element).on('click', function() { postFlip(seconds) });
-  }
-
-  flip('#five', 5);
-  flip('#thirty', 30);
-  flip('#longtime', 300);
+    %input.btn.btn-inverse{ type: 'submit', value: '30 seconds' }
+  %div.input-append
+    %form{action: '/flip', method: 'POST'}
+      %input.custom.span1{value: '5', name: 'minutes_til_flip', type: 'text'}
+      %button.btn.btn-inverse.btn-minute{type: 'submit'}
+        minutes
