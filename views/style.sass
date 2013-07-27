@@ -1,23 +1,48 @@
+=vcenter
+  display: -moz-box
+  -moz-box-align: center
+  -moz-box-pack: center
+  display: -webkit-box
+  -webkit-box-align: center
+  -webkit-box-pack: center
+  display: box
+  box-align: center
+  box-pack: center
+
+=parent-of-horizontal
+  -moz-box-orient: horizontal
+  -webkit-box-orient: horizontal
+  box-orient: horizontal
+
+=child-flex($x)
+  -moz-box-flex: $x
+  -webkit-box-flex: $x
+  box-flex: $x
+
+a
+  color: #333
+
+html, body
+  height: 100%
+.container
+  +vcenter
+  height: 100%
 .middle
-  position: fixed
-  top: 30%
-  width: 100%
+  +vcenter
+  +parent-of-horizontal
 .logo
-  text-align: center
+  +vcenter
+  +child-flex(1)
   border-right: 1px solid #333
   height: 300px
-  h1
-    position: relative
-    top: 35%
-  a
-    color: #333
+  padding-right: 100px
 .mainpage
+  +vcenter
+  +child-flex(1.618)
+  margin: 100px
   form
     margin: 0
-  height: 300px
   .buttons
-    position: relative
-    top: 27%
     .btn
       width: 113px
     .btn-minute
