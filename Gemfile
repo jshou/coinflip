@@ -1,4 +1,5 @@
 source :rubygems
+ruby '2.0.0'
 
 gem 'sinatra', '~>1.3.3'
 gem 'sinatra-contrib', '~>1.3.1'
