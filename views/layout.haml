@@ -4,18 +4,15 @@
     %title coinflip
 
     %link{ rel: 'stylesheet', href: '/css/bootstrap.min.css' }
-    %link{ rel: 'stylesheet', href: '/css/bootstrap-responsive.min.css' }
     %link{ rel: 'stylesheet', href: '/style.css' }
 
     %script{ src: '/js/bootstrap.min.js' }
     %script{ src: '/js/jquery.min.js' }
 
   %body
-    .container
-      .middle
-        .row
-          .logo.span3
-            %h1
-              %a(href = '/') coinflip
-          .mainpage.span8.offset1
-            =yield
+    .content
+      .header.left-aligned
+        %h1
+          %a(href = '/') coinflip
+      .main.left-aligned
+        =yield
