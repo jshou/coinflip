@@ -12,6 +12,8 @@
 
 :javascript
   $('[data-behavior=select-on-click]').on('click', function(e) {
-    $(e.target).focus();
-    $(e.target).select();
+    var $target = $(e.target);
+    $target.focus();
+    $target.select();
+    e.target.setSelectionRange(0, 9999);
   });
