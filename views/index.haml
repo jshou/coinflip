@@ -1,12 +1,19 @@
 .buttons
   %form{action: '/flip', method: 'POST'}
     %input{type: 'hidden', value: '5', name: 'seconds_til_flip'}
-    %input.btn.btn-inverse{ type: 'submit', value: '5 seconds' }
+    %button.wide-btn.btn.btn-inverse{ type: 'submit' } 5 seconds
   %form{action: '/flip', method: 'POST'}
     %input{type: 'hidden', value: '30', name: 'seconds_til_flip'}
-    %input.btn.btn-inverse{ type: 'submit', value: '30 seconds' }
-  %div.input-append
+    %button.wide-btn.btn.btn-inverse{ type: 'submit' } 30 seconds
+  .input-append
     %form{action: '/flip', method: 'POST'}
-      %input.custom.span1{value: '5', name: 'minutes_til_flip', type: 'text'}
-      %button.btn.btn-inverse.btn-minute{type: 'submit'}
-        minutes
+      %input.custom.span1{value: '5', name: 'minutes_til_flip', type: 'number', pattern: '\d*', 'data-behavior' => 'select-on-click'}
+      %button.narrow-btn.btn.btn-inverse.btn-minute{type: 'submit'} minutes
+
+:javascript
+  $('[data-behavior=select-on-click]').on('click', function(e) {
+    var $target = $(e.target);
+    $target.focus();
+    $target.select();
+    e.target.setSelectionRange(0, 9999);
+  });
